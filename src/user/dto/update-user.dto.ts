@@ -6,7 +6,12 @@ import {
   MinLength,
   IsBoolean,
   IsEmail,
+  IsEnum,
 } from 'class-validator';
+enum UserRole {
+  Admin = 'admin',
+  Employee = 'employee',
+}
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsString()
@@ -23,4 +28,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsBoolean()
   @IsOptional()
   status?: boolean;
+  @IsEnum(UserRole)
+  @IsOptional()
+  role?: UserRole;
 }

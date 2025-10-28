@@ -1,11 +1,17 @@
 import {
   IsBoolean,
   IsEmail,
+  IsEnum,
   IsNotEmpty,
   IsOptional,
   IsString,
   MinLength,
 } from 'class-validator';
+
+enum UserRole {
+  Admin = 'admin',
+  Employee = 'employee',
+}
 
 export class CreateUserDto {
   @IsString()
@@ -22,4 +28,7 @@ export class CreateUserDto {
   @IsBoolean()
   @IsOptional()
   status?: boolean;
+  @IsEnum(UserRole)
+  @IsOptional()
+  role?: UserRole;
 }
