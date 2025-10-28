@@ -3,6 +3,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongdodb://localhost/greendrop'), UserModule],
+  imports: [
+    MongooseModule.forRoot('mongodb://localhost/greendrop'),
+    UserModule,
+  ],
 })
 export class AppModule {}
