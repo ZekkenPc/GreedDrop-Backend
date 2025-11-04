@@ -1,16 +1,22 @@
-import { IsString, IsNumber, Min, Max, IsOptional } from 'class-validator';
+import { IsString, IsOptional, IsInt, Min, Max } from 'class-validator';
 
 export class CreateReadingDto {
   @IsString()
-  deviceId: string;
+  deviceId!: string;
 
-  @IsNumber() @Min(0) @Max(100)
-  humedad: number;
+  @IsOptional() @IsString()
+  name?: string;
 
-  @IsNumber() @Min(0) @Max(100)
-  pureza: number;
+  @IsOptional() @IsInt()
+  rssi?: number;
 
-  @IsOptional()
-  @IsString()
-  estado?: string;
+  // --- AGREGADO: sensores opcionales ---
+  @IsOptional() @Min(0) @Max(100)
+  humedad?: number;
+
+  @IsOptional() @Min(0) @Max(100)
+  pureza?: number;
+
+  @IsOptional() @IsString()
+  estado?: string; // por defecto "OK"
 }
