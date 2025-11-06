@@ -2,7 +2,7 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 
 enum UserRole {
   Admin = 'admin',
-  Employee = 'employee',
+  Employee = 'empleado',
 }
 
 @Schema({
@@ -24,15 +24,15 @@ export class User {
   email: string;
   @Prop({
     required: true,
-    type: Number,
-    min: [8, 'The password must be bigger than 8 letter '],
+    type: String,
+    minlength: [8, 'The password must be bigger than 8 letter'],
   })
   password: string;
 
-  @Prop({ require: true, default: true })
+  @Prop({ required: true, default: true })
   status: boolean;
 
-  @Prop({ default:'Employee', enum:UserRole, required: true })
+  @Prop({ default: 'empleado', enum: UserRole, required: true })
   role: UserRole;
 }
 

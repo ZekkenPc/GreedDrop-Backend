@@ -12,7 +12,11 @@ async function bootstrap() {
     credentials: true,
   });
   
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+  transform: true,
+  transformOptions: { enableImplicitConversion: true }
+  }));
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

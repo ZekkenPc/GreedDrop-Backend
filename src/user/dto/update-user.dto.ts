@@ -10,7 +10,7 @@ import {
 } from 'class-validator';
 enum UserRole {
   Admin = 'admin',
-  Employee = 'employee',
+  Employee = 'empleado',
 }
 
 export class UpdateUserDto extends PartialType(CreateUserDto) {

@@ -10,7 +10,7 @@ import {
 
 enum UserRole {
   Admin = 'admin',
-  Employee = 'employee',
+  Employee = 'empleado',
 }
 
 export class CreateUserDto {
